@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+  /* Main Theme */
+  --background: 230 60% 6%;
+  --foreground: 210 40% 98%;
+  --card: 230 50% 10%;
+  --card-foreground: 210 40% 98%;
+
+  /* Brand Colors */
+  --primary: 186 100% 50%;
+  --secondary: 290 100% 65%;
+  --accent: 45 100% 60%;
+  --pink: 320 100% 60%;
+  --green: 150 100% 50%;
+
+  /* Utility Colors */
+  --destructive: 0 62.8% 50%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 70%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 186 100% 50%;
+}
+
+body {
+  font-family: 'Exo 2', sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+h1, h2, h3, h4, h5, h6, .heading, .nav-label, .button, .score {
+  font-family: 'Orbitron', sans-serif;
+}
