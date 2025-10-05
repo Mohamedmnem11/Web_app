@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import API from "../api";
 import { useNavigate, Link } from "react-router-dom";
 import { Mail, Lock } from "lucide-react";
 
@@ -11,15 +10,11 @@ export default function Login() {
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await API.post("/auth/login", form);
-      login(res.data.user, res.data.token);
-      navigate("/episodes");
-    } catch (err) {
-      alert(err.response?.data?.message || "Login failed");
-    }
+    const success = login(form.email, form.password);
+    if (success) navigate("/episodes");
+    else alert("Invalid email or password");
   };
 
   return (
@@ -30,7 +25,6 @@ export default function Login() {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
           <div className="flex items-center bg-[#0f1424] rounded-md px-3 py-2">
             <Mail className="text-cyan-400 mr-2" size={18} />
             <input
@@ -44,7 +38,6 @@ export default function Login() {
             />
           </div>
 
-          {/* Password */}
           <div className="flex items-center bg-[#0f1424] rounded-md px-3 py-2">
             <Lock className="text-cyan-400 mr-2" size={18} />
             <input
